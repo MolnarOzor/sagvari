@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dzsáva Szkript</title>
+</head>
+<body>
+    <p id="reklam">Ez itt a reklám helye. Pls ide illeszd be a reklámodat. Ez fogja felbaszni az embereket amikor használni akarják a weboldaladat.</p>
+    <button type="button" onclick="document.getElementById('reklam').innerHTML='Mi a fasznak kattintottál rá te gyökér mondtam, hogy ne tedd!!!'">Erre ne kattints rá!</button>
+    <br>
+    <img src="happy.png" width="200" id="face" onmouseover="document.getElementById('face').src='angry.png'" onmouseout="document.getElementById('face').src='happy.png'"><br>
+    <button type="button" onclick="document.getElementById('face').src='angry.png', document.getElementById('reklam').innerHTML='Te el akartad rontani a kedvemet? Te nyomorult állat!' ">Kattints ide, hogy elrontsd Mosojgós Fejecske kedvét!</button>
+    <button onclick="document.getElementById('face').src='happy.png', document.getElementById('reklam').innerHTML='Megbocsátok!' ">Simogasd meg Mosojgós Fejecskét!</button>
+    <button type="button" onclick="document.getElementById('reklam').style.fontStyle='italic'">Dőlt</button>
+    <br>
+    <button type="button" onclick="document.getElementById('face').style.visibility ='hidden', document.getElementById('reklam').innerHTML='Hihi, most aztán nem fogja megtalálni senki' ">Bújtasd el Mosolygós Fejecskét!</button><br>
+    <button type="button" onclick="document.getElementById('face').style.visibility ='visible', document.getElementById('reklam').innerHTML='Na hát, hát itt bujkált! Na de most megvan a kis huncut!' ">Találd meg Mosolygós Fejecskét!</button><br>
+    <button type="button" onclick="document.getElementById('face').src='dead.png', document.getElementById('reklam').innerHTML='Te rohadék! Megölted őt!!! NEEEEEEEE!' ">Vess véget Mosolygós Fejecske szenvedéseinek!</button><br>
+    <button type="button" onclick="document.getElementById('face').src='rip.png', document.getElementById('reklam').innerHTML='Mosolygós fejecske örök nyugalomra tért!' ">Temesd el Mosolygós Fejecskét!</button><br>
+
+    <h2>Számvizsgálat</h2>
+    <form name="urlap">
+        <input type="text" name="beszam">
+        <input type="button" value="Számvizsgálat" onclick="vizsgal()">
+    </form>
+    <p>Paritás: <span id="paritas">?</span></p>
+    <p>Osztók száma: <span id="osztokszama">?</span></p>
+    <p>Prim szám: <span id="prim">?</span></p>
+    <p>Négyzetszám: <span id="negyzetszam">?</span></p>
+</body> 
+<script>
+    function check() {
+        let x = Number(document.form["urlap"]);
+        if (x % 2 == 0) {
+            document.getElementId("eredmeny").innerhtml="páros";
+        }
+        else {
+            document.getElementId("eredmeny").innerHtml='páratlan';
+        }
+    }
+
+    function vizsgal() {        
+            let a = Number(document.forms["urlap"]["beszam"].value);
+            if (a % 2 == 0)
+            {
+                document.getElementById('paritas').innerHTML = 'Páros';
+            }
+            else
+            {
+                document.getElementById('paritas').innerHTML = 'Páratlan';
+            }
+            document.getElementById('osztokszama').innerHTML = osztokszama(a);
+            document.getElementById('prim').innerHTML = prim(a);
+            document.getElementById('negyzetszam').innerHTML = negyzetszam(a);
+        }
+
+    function osztokszama(n) {
+        let db = 0;
+        for(let i = 0; i <= n; i++) {
+            if (n % i == 0) {
+                db++;
+            }
+        }
+        return db;
+    }
+
+    function prim(n) {
+        let valasz = "nem prim"
+        if (osztokszama(n) == 2) {
+            valasz = "prim";
+        }
+        return valasz;
+    }
+
+    function negyzetszam(n) {
+        let i = 1;
+        let osszeg = 1;
+        while(osszeg < n) {
+            i = i + 2;
+            osszeg = osszeg + i;
+        }
+        if(osszeg == n) {
+            return "igen";
+        }
+        else {
+            return "nem";
+        }
+    }
+</script>
+</html>
